@@ -1,0 +1,55 @@
+﻿@page
+@model FeaterG.Pages.Users.EditModel
+@{
+}
+<div class=" shadow rounded bg-white m-lg-5 p-lg-3">
+    <h2 class="text-info">Edit Service Type</h2>
+    <div class="form-group m-2">
+        <form method="post">
+            <input asp-for="ApplicationUser.Id" style="display:none;" />
+            <div class="row  p-2">
+                <div class="col-3">
+                    <label asp-for="ApplicationUser.FullName"></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="ApplicationUser.FullName" class="form-control" />
+                </div>
+                <span asp-validation-for="ApplicationUser.FullName" class="text-danger"></span>
+            </div>
+            <div class="row p-2">
+                <div class="col-3">
+                    <label asp-for="ApplicationUser.Email"></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="ApplicationUser.Email" class="form-control" disabled="disabled" />
+                </div>
+                <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+            </div>
+            <div class="row p-2">
+                <div class="col-3">
+                    <label asp-for="ApplicationUser.PhoneNumber"></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="ApplicationUser.PhoneNumber" class="form-control"/>
+                </div>
+                <span asp-validation-for="ApplicationUser.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="row  p-2">
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <input type="submit" class="btn btn-info form-control" value="Save" />
+                </div>
+                <div class="col-5">
+                    <a class="btn btn-danger" asp-page="Index">Back</a>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+@section Scripts{
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+}

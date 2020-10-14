@@ -1,0 +1,46 @@
+﻿@page
+@model FeaterG.Pages.ServiceTypes.EditModel
+@{
+}
+<div class=" shadow rounded bg-white m-lg-5 p-lg-3">
+    <h2 class="text-info">Edit Service Type</h2>
+    <div class="form-group m-2">
+        <form method="post">
+            <input asp-for="ServiceType.Id" style="display:none;" />
+            <div class="row  p-2">
+                <div class="col-3">
+                    <label asp-for="ServiceType.ServiceName"></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="ServiceType.ServiceName" class="form-control"/>
+                </div>
+                <span asp-validation-for="ServiceType.ServiceName" class="text-danger"></span>
+            </div>
+            <div class="row p-2">
+                <div class="col-3">
+                    <label asp-for="ServiceType.Price"></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="ServiceType.Price" class="form-control" />
+                </div>
+                <span asp-validation-for="ServiceType.Price" class="text-danger"></span>
+            </div>
+            <div class="row  p-2">
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <input type="submit" class="btn btn-info form-control" value="Save" />
+                </div>
+                <div class="col-5">
+                    <a class="btn btn-danger" asp-page="Index">Back</a>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+@section Scripts{
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+}

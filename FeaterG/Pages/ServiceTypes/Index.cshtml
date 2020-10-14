@@ -1,0 +1,52 @@
+﻿@page
+@model FeaterG.Pages.ServiceTypes.IndexModel
+@{
+}
+<br />
+<div class=" shadow rounded bg-white m-lg-5 p-lg-3">
+    <div class="row ">
+            <div class="col-6">
+                <h2 class="text-info">ServiceTypes</h2>
+            </div>
+            <div class="col-6">
+                <a class="btn btn-success float-lg-right text-white m-1 font-weight-bold" asp-page="Create">Create ServiceTypes
+                <i class="carousel-control-next-icon " style="height:10px;"></i>  </a>
+            </div>
+    </div>
+    @if (Model.ServiceTypeList.Count() == 0)
+    {
+        <p class="text-body">You have no Service Type </p>
+    }
+    else { 
+    <div class="row">
+        <table class="table table-striped border">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayNameFor(m=>m.ServiceTypeList[0].ServiceName)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(m => m.ServiceTypeList[0].Price)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ServiceTypeList) { 
+                <tr>
+                    <td class="text-body">@Html.DisplayFor(m=>item.ServiceName)</td>
+                    <td class="text-center">@Html.DisplayFor(m => item.Price)</td>
+                    <td>
+                        <div class="btn-group float-right">
+                            <a class="btn btn-success" asp-page="Edit" asp-route-Id="@item.Id"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-info"  asp-page="Details" asp-route-Id="@item.Id"><i class="fas fa-list-ul"></i></a>
+                            <a class="btn btn-danger"  asp-page="Delete" asp-route-Id="@item.Id"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }
+</div>

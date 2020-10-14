@@ -1,0 +1,60 @@
+﻿@page
+@model FeaterG.Pages.Users.IndexModel
+@{
+}
+<br />
+<div class=" shadow rounded bg-white m-lg-5 p-lg-3">
+    <div class="row ">
+        <div class="col-6">
+            <h2 class="text-info">Users</h2>
+        </div>
+        <div class="col-6">
+            <a class="btn btn-success float-lg-right text-white m-1 font-weight-bold" asp-area="Identity" asp-page="/Account/Register">
+                Create New User
+                <i class="carousel-control-next-icon " style="height:10px;"></i>
+            </a>
+        </div>
+    </div>
+    @if (Model.ApplicationUserList.Count() == 0)
+    {
+        <p class="text-body">You have no Service Type </p>
+    }
+    else
+    {
+        <div class="row">
+            <table class="table table-striped border">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            @Html.DisplayNameFor(m => m.ApplicationUserList[0].FullName)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(m => m.ApplicationUserList[0].PhoneNumber)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(m => m.ApplicationUserList[0].Email)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ApplicationUserList)
+                    {
+                    <tr>
+                        <td class="text-body">@Html.DisplayFor(m => item.FullName)</td>
+                        <td class="text-body">@Html.DisplayFor(m => item.PhoneNumber)</td>
+                        <td class="text-body">@Html.DisplayFor(m => item.Email)</td>
+                        <td>
+                            <div class="btn-group float-right">
+                                <a class="btn btn-success" asp-page="Edit" asp-route-Id="@item.Id"><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-info" asp-page="Details" asp-route-Id="@item.Id"><i class="fas fa-list-ul"></i></a>
+                                <a class="btn btn-danger" asp-page="Delete" asp-route-Id="@item.Id"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
